@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,6 +21,8 @@ public class Item extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+    @ManyToMany(mappedBy = "items", fetch = FetchType.LAZY)
+    private Set<Cart> carts;
     @Column(name = "quantity")
     private Integer quantity;
     @Column(name = "price")

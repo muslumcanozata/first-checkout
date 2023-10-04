@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 @Setter
 @Entity
 @Table(name = "users")
-public class Users extends BaseEntity {
+public class User extends BaseEntity {
     @Column(name = "name")
     private String name;
     @Column(name = "surname")
@@ -23,4 +23,6 @@ public class Users extends BaseEntity {
     @Pattern(regexp="(^$|[0-9]{10})")
     @Column(name = "phone_number")
     private String phoneNumber;
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
 }

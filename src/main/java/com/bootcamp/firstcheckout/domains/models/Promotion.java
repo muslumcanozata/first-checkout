@@ -14,9 +14,9 @@ import java.util.List;
 public class Promotion extends BaseEntity {
     @Column(name = "title")
     private String title;
-    @OneToMany(mappedBy = "carts", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
     private List<Cart> carts;
-    @OneToMany(mappedBy = "items", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
     private List<Item> items;
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "type")
