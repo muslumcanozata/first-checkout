@@ -1,6 +1,5 @@
 package com.bootcamp.firstcheckout.domains.models;
 
-import com.bootcamp.firstcheckout.domains.enums.ItemType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +9,8 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-@Table(name = "items")
-public class Item extends BaseEntity {
+@Table(name = "vas_items")
+public class VasItem extends Item {
     @Column(name = "title")
     private String title;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -24,8 +23,6 @@ public class Item extends BaseEntity {
     private Integer quantity;
     @Column(name = "price")
     private BigDecimal price;
-    @Enumerated(EnumType.ORDINAL)
-    private ItemType type;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "promotion_id", referencedColumnName = "id")
     private Promotion promotion;

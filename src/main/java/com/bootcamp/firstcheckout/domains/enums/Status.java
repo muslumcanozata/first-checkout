@@ -1,6 +1,6 @@
 package com.bootcamp.firstcheckout.domains.enums;
 
-public enum StatusEnum {
+public enum Status {
     ACTIVE,
     INACTIVE,
     DELETED

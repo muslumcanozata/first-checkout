@@ -1,6 +1,6 @@
 package com.bootcamp.firstcheckout.domains.dtos;
 
-import com.bootcamp.firstcheckout.domains.enums.StatusEnum;
+import com.bootcamp.firstcheckout.domains.enums.Status;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,5 +17,5 @@ public class BaseEntityDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String createdAt;
     private UUID createdBy;
-    private StatusEnum status;
+    private Status status;
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class CartDTO extends BaseEntityDTO {
-    private List<CartItemDTO> cartItemDTOs;
-    private PromotionDTO promotionDTO;
+public class CartItemDTO extends BaseEntityDTO {
+    private ItemDTO itemDTO;
+    private List<VasItemDTO> vasItemDTOs;
 }

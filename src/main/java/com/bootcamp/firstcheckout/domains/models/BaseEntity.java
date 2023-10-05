@@ -1,6 +1,6 @@
 package com.bootcamp.firstcheckout.domains.models;
 
-import com.bootcamp.firstcheckout.domains.enums.StatusEnum;
+import com.bootcamp.firstcheckout.domains.enums.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +26,7 @@ public class BaseEntity {
     private UUID createdBy;
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
-    private StatusEnum status;
+    private Status status;
 }
 
 

@@ -3,15 +3,13 @@ package com.bootcamp.firstcheckout.domains.dtos;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Getter
 @Setter
-public class ItemDTO extends BaseEntityDTO {
+public class VasItemDTO extends BaseEntityDTO {
     private String title;
-    private SellerDTO sellerDTO;
-    private CategoryDTO categoryDTO;
+    private SellerDTO seller;
+    private CategoryDTO category;
     private Integer quantity;
-    private BigDecimal price;
+    private Double price;
     private PromotionDTO promotionDTO;
 }

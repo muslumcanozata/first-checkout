@@ -1,6 +1,6 @@
 package com.bootcamp.firstcheckout.domains.models;
 
-import com.bootcamp.firstcheckout.domains.enums.PromotionTypeEnum;
+import com.bootcamp.firstcheckout.domains.enums.PromotionType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,9 +18,11 @@ public class Promotion extends BaseEntity {
     private List<Cart> carts;
     @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
     private List<Item> items;
+    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
+    private List<VasItem> vasItems;
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "type")
-    private PromotionTypeEnum type;
+    private PromotionType type;
     @Column(name = "is_percent")
     private Boolean isPercent;
     @Column(name = "amount")

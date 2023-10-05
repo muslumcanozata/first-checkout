@@ -1,7 +1,6 @@
 package com.bootcamp.firstcheckout.domains.dtos;
 
-import com.bootcamp.firstcheckout.domains.enums.PromotionTypeEnum;
-import com.bootcamp.firstcheckout.domains.models.Item;
+import com.bootcamp.firstcheckout.domains.enums.PromotionType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,9 +10,9 @@ import java.util.List;
 @Setter
 public class PromotionDTO extends BaseEntityDTO {
     private String title;
-    private List<CartDTO> carts;
-    private List<Item> items;
-    private PromotionTypeEnum type;
+    private List<CartDTO> cartDTOs;
+    private List<ItemDTO> itemDTOs;
+    private PromotionType type;
     private Boolean isPercent;
     private Double amount;
 }
