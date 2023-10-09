@@ -28,7 +28,7 @@ public class PromotionServiceTest {
     private PromotionRepository repository;
 
     @Test
-    public void calculateCategoryPromotionDiscount_Green() {
+    public void shouldCalculateCategoryPromotionDiscount_Green() {
         //given
         Cart cart = new Cart();
         cart.setTotalPrice(100.0);
@@ -41,6 +41,7 @@ public class PromotionServiceTest {
         CartItem cartItem = new CartItem();
         cartItem.setItem(itemWithPromotion);
         cart.getCartItems().add(cartItem);
+        Double expectedPrice = 90.00;
 
         Promotion categoryPromotion = new Promotion();
         categoryPromotion.setAmount(0.10);
@@ -50,7 +51,7 @@ public class PromotionServiceTest {
         service.calculateCategoryPromotion(cart);
 
         //then
-        assertEquals("The discount should be 10", 90.0, cart.getTotalPrice());
+        Assertions.assertEquals(expectedPrice, cart.getTotalPrice());
     }
 
     @Test
@@ -66,6 +67,7 @@ public class PromotionServiceTest {
         Cart cart = new Cart();
         cart.getCartItems().add(cartItem);
         cart.setTotalPrice(100.0);
+        Double expectedPrice = 100.00;
 
         Promotion categoryPromotion = new Promotion();
         categoryPromotion.setAmount(0.10);
@@ -74,8 +76,86 @@ public class PromotionServiceTest {
         service.calculateCategoryPromotionDiscount(cart, categoryPromotion);
 
         //then
-        assertEquals("The discount should be 0 because the item isn't eligible", 100.0, cart.getTotalPrice());
+        Assertions.assertEquals(expectedPrice, cart.getTotalPrice());
     }
+
+    @Test
+    public void shouldCalculateSellerPromotionDiscount_Green() {
+        //given
+        Cart cart = new Cart();
+        cart.setTotalPrice(200.0);
+        Item itemWithPromotion1 = new Item();
+        Seller seller = new Seller();
+        seller.setId(1);
+        itemWithPromotion1.setId(1);
+        itemWithPromotion1.setSeller(seller);
+        itemWithPromotion1.setPrice(100.0);
+        itemWithPromotion1.setQuantity(1);
+        CartItem cartItem = new CartItem();
+        cartItem.setItem(itemWithPromotion1);
+        cart.getCartItems().add(cartItem);
+        Item itemWithPromotion2 = new Item();
+        Seller seller2 = new Seller();
+        seller2.setId(1);
+        itemWithPromotion2.setId(2);
+        itemWithPromotion2.setSeller(seller2);
+        itemWithPromotion2.setPrice(100.0);
+        itemWithPromotion2.setQuantity(1);
+        CartItem cartItem2 = new CartItem();
+        cartItem2.setItem(itemWithPromotion2);
+        cart.getCartItems().add(cartItem2);
+        Double expectedPrice = 190.00;
+
+
+        Promotion sameSellerPromotion = new Promotion();
+        sameSellerPromotion.setAmount(0.05);
+
+        //when
+        when(repository.findById(PromotionType.SAME_SELLER_PROMOTION.getId())).thenReturn(Optional.of(sameSellerPromotion));
+        service.calculateSameSellerPromotionDiscount(cart);
+
+        //then
+        Assertions.assertEquals(expectedPrice, cart.getTotalPrice());
+    }
+
+    @Test
+    public void shouldNotCalculateCategoryPromotionDiscount_WhenCartIsNotEligible() {
+        //given
+        Cart cart = new Cart();
+        cart.setTotalPrice(200.0);
+        Item itemWithPromotion1 = new Item();
+        Seller seller = new Seller();
+        seller.setId(1);
+        itemWithPromotion1.setId(1);
+        itemWithPromotion1.setSeller(seller);
+        itemWithPromotion1.setPrice(100.0);
+        itemWithPromotion1.setQuantity(1);
+        CartItem cartItem = new CartItem();
+        cartItem.setItem(itemWithPromotion1);
+        cart.getCartItems().add(cartItem);
+        Item itemWithPromotion2 = new Item();
+        Seller seller2 = new Seller();
+        seller2.setId(2);
+        itemWithPromotion2.setId(2);
+        itemWithPromotion2.setSeller(seller2);
+        itemWithPromotion2.setPrice(100.0);
+        itemWithPromotion2.setQuantity(1);
+        CartItem cartItem2 = new CartItem();
+        cartItem2.setItem(itemWithPromotion2);
+        cart.getCartItems().add(cartItem2);
+        Double expectedPrice = 200.00;
+
+
+        Promotion categoryPromotion = new Promotion();
+        categoryPromotion.setAmount(0.10);
+
+        //when
+        service.calculateCategoryPromotionDiscount(cart, categoryPromotion);
+
+        //then
+        Assertions.assertEquals(expectedPrice, cart.getTotalPrice());
+    }
+
 
     @Test
     void shouldCalculateTotalPricePromotion_WhenCartWithTotalPrice500() {
