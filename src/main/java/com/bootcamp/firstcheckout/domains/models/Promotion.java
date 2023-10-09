@@ -1,14 +1,10 @@
 package com.bootcamp.firstcheckout.domains.models;
 
 import com.bootcamp.firstcheckout.domains.enums.PromotionType;
-import com.bootcamp.firstcheckout.domains.enums.Status;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
