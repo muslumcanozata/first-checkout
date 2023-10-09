@@ -46,11 +46,13 @@ public class PromotionService {
         for (CartItem cartItem : cart.getCartItems()) {
             if (cartItem.getItem().getSeller().getId() != sellerId) {
                 log.info("Same seller promotion not applied for cart {}", cart.getId());
+                totalDiscount = Constants.ZERO;
                 break;
             }
             totalDiscount = totalDiscount + (cartItem.getItem().getPrice() * cartItem.getItem().getQuantity() * sameSellerPromotion.getAmount());
         }
         sameSellerPromotion.setCalculatedAmount(totalDiscount);
+        cart.setTotalPrice(cart.getTotalPrice() - totalDiscount);
     }
 
     private Optional<Promotion> getPromotionById(Integer id) {
