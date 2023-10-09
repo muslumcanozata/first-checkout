@@ -1,6 +1,5 @@
 package com.bootcamp.firstcheckout.services;
 
-import com.bootcamp.firstcheckout.controllers.requests.AddVasItemToAnItemInCartRequest;
 import com.bootcamp.firstcheckout.daos.VasItemRepository;
 import com.bootcamp.firstcheckout.domains.models.VasItem;
 import lombok.extern.slf4j.Slf4j;

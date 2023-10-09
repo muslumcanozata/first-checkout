@@ -2,7 +2,6 @@ package com.bootcamp.firstcheckout.services;
 
 import com.bootcamp.firstcheckout.daos.SellerRepository;
 import com.bootcamp.firstcheckout.domains.models.Seller;
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

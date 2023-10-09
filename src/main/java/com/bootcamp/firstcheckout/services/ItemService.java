@@ -4,7 +4,6 @@ import com.bootcamp.firstcheckout.config.CommonMapper;
 import com.bootcamp.firstcheckout.controllers.requests.AddAnItemToCartRequest;
 import com.bootcamp.firstcheckout.domains.models.Item;
 import com.bootcamp.firstcheckout.daos.ItemRepository;
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
