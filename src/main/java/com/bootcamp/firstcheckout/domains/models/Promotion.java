@@ -1,24 +1,34 @@
 package com.bootcamp.firstcheckout.domains.models;
 
 import com.bootcamp.firstcheckout.domains.enums.PromotionType;
+import com.bootcamp.firstcheckout.domains.enums.Status;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "promotions")
 public class Promotion extends BaseEntity {
     @Column(name = "title")
     private String title;
-    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "promotion")
     private List<Cart> carts;
-    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "promotion")
     private List<Item> items;
-    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "promotion")
     private List<VasItem> vasItems;
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "type")
@@ -27,4 +37,6 @@ public class Promotion extends BaseEntity {
     private Boolean isPercent;
     @Column(name = "amount")
     private Double amount;
+    @Column(name = "calculated_amount")
+    private Double calculatedAmount;
 }

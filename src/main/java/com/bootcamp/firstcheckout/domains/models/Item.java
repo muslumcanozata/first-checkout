@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Getter
 @Setter
 @Entity
@@ -23,7 +21,7 @@ public class Item extends BaseEntity {
     @Column(name = "quantity")
     private Integer quantity;
     @Column(name = "price")
-    private BigDecimal price;
+    private Double price;
     @Enumerated(EnumType.ORDINAL)
     private ItemType type;
     @ManyToOne(fetch = FetchType.LAZY)

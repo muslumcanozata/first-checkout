@@ -10,12 +10,12 @@ import java.util.UUID;
 @Getter
 @Setter
 public class BaseEntityDTO {
-    private UUID id;
+    private Integer id;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String updatedAt;
-    private UUID updatedBy;
+    private String updatedBy;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String createdAt;
-    private UUID createdBy;
+    private String createdBy;
     private Status status;
 }

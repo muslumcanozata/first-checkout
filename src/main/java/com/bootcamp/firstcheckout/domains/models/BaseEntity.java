@@ -6,27 +6,26 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @MappedSuperclass
 public class BaseEntity {
     @Id
-    private UUID id;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "updated_at")
-    private String updatedAt;
-    @Column(name = "updated_by")
-    private UUID updatedBy;
+    @Column(name = "id")
+    private Integer id;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_at")
-    private String createdAt;
-    @Column(name = "created_by")
-    private UUID createdBy;
+    private LocalDateTime createdAt;
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
     private Status status;
+
+    @PrePersist
+    void createdAt() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
 
 

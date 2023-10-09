@@ -1,10 +1,10 @@
 package com.bootcamp.firstcheckout.domains.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -22,7 +22,7 @@ public class VasItem extends Item {
     @Column(name = "quantity")
     private Integer quantity;
     @Column(name = "price")
-    private BigDecimal price;
+    private Double price;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "promotion_id", referencedColumnName = "id")
     private Promotion promotion;

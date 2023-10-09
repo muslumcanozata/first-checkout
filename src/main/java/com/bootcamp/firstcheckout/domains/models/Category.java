@@ -1,10 +1,13 @@
 package com.bootcamp.firstcheckout.domains.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,4 +16,10 @@ import lombok.Setter;
 public class Category extends BaseEntity {
     @Column(name = "title")
     private String title;
+    @JsonIgnore
+    @OneToMany(mappedBy = "category")
+    private List<Item> items;
+    @JsonIgnore
+    @OneToMany(mappedBy = "category")
+    private List<VasItem> vasItems;
 }
