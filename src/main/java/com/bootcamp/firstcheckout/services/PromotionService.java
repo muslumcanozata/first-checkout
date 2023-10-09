@@ -5,7 +5,6 @@ import com.bootcamp.firstcheckout.domains.models.Cart;
 import com.bootcamp.firstcheckout.domains.models.CartItem;
 import com.bootcamp.firstcheckout.domains.models.Promotion;
 import com.bootcamp.firstcheckout.daos.PromotionRepository;
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

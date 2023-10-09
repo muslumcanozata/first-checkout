@@ -5,7 +5,6 @@ import com.bootcamp.firstcheckout.controllers.requests.AddVasItemToAnItemInCartR
 import com.bootcamp.firstcheckout.domains.dtos.CartDTO;
 import com.bootcamp.firstcheckout.domains.models.Item;
 import com.bootcamp.firstcheckout.domains.models.VasItem;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -10,7 +10,7 @@ import com.bootcamp.firstcheckout.domains.models.*;
 import com.bootcamp.firstcheckout.daos.CartRepository;
 import com.bootcamp.firstcheckout.exceptions.custom.CartValidationException;
 import jakarta.annotation.PostConstruct;
-import jakarta.transaction.Transactional;
+
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -140,7 +140,7 @@ public class CartService {
     }
 
     public void checkItemQuantityByItemIdInCart(AddAnItemToCartRequest request) {
-        Optional<CartItem> cartItemOptional = getCart().getCartItems().stream().filter(cartItem -> cartItem.getItem().getId() == request.getItemId()).findFirst();
+        Optional<CartItem> cartItemOptional = getCart().getCartItems().stream().filter(cartItem -> Objects.equals(cartItem.getItem().getId(), request.getItemId())).findFirst();
         if(cartItemOptional.isPresent()) {
             CartItem cartItem = cartItemOptional.get();
             int totalQuantity = cartItem.getItem().getQuantity() + request.getQuantity();
