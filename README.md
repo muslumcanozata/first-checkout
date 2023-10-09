@@ -50,6 +50,7 @@ This project is a shopping cart application designed to accommodate various type
   - price: The price of the item.
   - quantity: The quantity of the item to add.
 - The output will indicate whether the operation was successful (result) and provide a descriptive message (message).
+
 **Input**
 ```json
 {
@@ -68,6 +69,7 @@ This project is a shopping cart application designed to accommodate various type
 
 }
 ```
+
 ## Action 2: Add VasItem to Item
 - This action allows you to add a Value Added Service (VasItem) to an existing item in the Cart.
 - You need to provide the following details as input:
@@ -102,16 +104,26 @@ This project is a shopping cart application designed to accommodate various type
 - This action allows you to remove an item from the Cart.
 - You need to provide the unique itemId of the item you want to remove as input.
 - The output will indicate whether the operation was successful (result) and provide a descriptive message (message).
+
 **Input**
 ```json
 {
   "itemId": int //as path variable
 }
 ```
+**Output**
+```json
+{
+  "result": boolean,
+  "message": string
+}
+```
+
 ## Action 4: Reset Cart
 - This action allows you to reset the Cart, removing all items and promotions.
 - No input is required for this action.
 - The output will indicate whether the operation was successful (result) and provide a descriptive message (message).
+
 **Output**
 ```json
 {
@@ -124,6 +136,7 @@ This project is a shopping cart application designed to accommodate various type
 - This action allows you to view the contents of the Cart along with applied promotions and discounts.
 - No input is required for this action.
 - The output will indicate whether the operation was successful (result) and provide detailed information about the items in the Cart, the total price, the applied promotion ID, and the total discount.
+
 **Output**
 ```json
 {
