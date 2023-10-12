@@ -38,7 +38,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GH_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract image metadata
         id: meta
@@ -55,4 +55,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           secrets: |
-            GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
