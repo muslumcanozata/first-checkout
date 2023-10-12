@@ -197,11 +197,3 @@ To start the services, run:
 ```
 $ docker-compose up -d
 ```
-
-
-
-PS:
-- I would have liked to fulfill all the items in the checklist, but I was in charge of the devnot summit 2023 conference this week. I had to dedicate most of my week to this and I could not spend as much time on the case as I wanted. sorry for the shortcomings.
-
-
-![](https://i.ibb.co/7kDqh3J/IMG-6282.png)
