@@ -15,7 +15,7 @@ COPY src /app/src
 RUN gradle build --no-daemon
 
 # Create a minimal runtime image
-FROM openjdk:17-jre-slim
+FROM openjdk:17-jdk
 
 # Set the working directory in the container
 WORKDIR /app
