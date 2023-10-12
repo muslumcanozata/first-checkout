@@ -22,11 +22,6 @@ jobs:
           java-version: 17
           distribution: "corretto"
 
-      - name: Create .env
-        working-directory: .
-        run: |
-          echo "${{ secrets.FIRST_CHECKOUT_ENV }}" >> ./.env
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
