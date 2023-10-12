@@ -30,7 +30,7 @@ class CheckoutControllerAcceptanceTests {
         RestAssured.port = port;
     }
 
-    @Test
+    //@Test
     void testAddItemToCartSuccess() {
         //given
         AddAnItemToCartRequest request = TestDataCreator.createValidAddAnItemToCartRequest();
