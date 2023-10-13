@@ -29,7 +29,7 @@ pipeline{
                         sh '''
                             docker login -u $USERNAME -p $PASSWORD
                             docker pull ${IMAGE_NAME}:${VERSION}
-                            docker run -d -p 8090:8080 ${IMAGE_NAME}:${VERSION}
+                            docker run -d -p 8090:8080 --network my-net ${IMAGE_NAME}:${VERSION}
                         '''
                     }
                 }
